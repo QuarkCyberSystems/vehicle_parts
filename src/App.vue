@@ -1,30 +1,37 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <!-- Use a vertical flex layout to place Header at top, Footer at bottom -->
+  <div class="min-h-screen flex flex-col bg-gray-50">
+    <!-- Global Header -->
+    <Header />
+
+    <!-- Main content: router-view to show whichever route is active -->
+    <main class="flex-1 p-4">
+      <router-view />
+    </main>
+
+    <!-- Global Footer -->
+    <Footer />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<script>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Header,   // Your global header (with the cog icon & dropdown)
+    Footer    // Your global footer ("Powered by QCS" linking to quacks.com)
+  }
+};
+</script>
+
+<style>
+/* 
+  .min-h-screen flex flex-col:
+    - min-h-screen ensures it fills the full browser height
+    - flex flex-col organizes header at the top, main in the middle, footer at the bottom
+  .bg-gray-50 is a Tailwind class for a subtle gray background
+*/
 </style>
