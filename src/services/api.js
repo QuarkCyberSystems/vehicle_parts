@@ -1,8 +1,10 @@
-import axios from 'axios';
+import axios from 'axios'
+
+// Use the Vite env variable, or fall back to '/api/v1'
+const baseURL = import.meta.env.VITE_API_BASE_URL || '/api/v1'
 
 const apiClient = axios.create({
-  // Now we just use the relative path /api/v1
-  baseURL: '/api/v1',
+  baseURL,
   auth: {
     username: 'erpnextdev',
     password: 'We!c@me!2345'
@@ -10,6 +12,6 @@ const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json'
   }
-});
+})
 
-export default apiClient;
+export default apiClient
